@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/iv_home"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:scaleType="matrix"
+        android:src="@drawable/bookshelf_detail_bg"/>
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_encode"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:onClick="testClick"-->
+    <!--android:text="加密内容"/>-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_decode"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:onClick="testClick"-->
+    <!--android:text="解密内容"/>-->
+
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:onClick="testClick"-->
+    <!--android:text="dialog背景变暗速度"/>-->
+
+    <!--<WebView-->
+    <!--android:id="@+id/wv_book_shelf_web"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"/>-->
+
+    <!--<ScrollView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:maxHeight="400dp"-->
+    <!--android:text="易阅通（CNPeReading.com）是中图公司自主开发的数字内容搜选、采购与阅读一站式全球资源交易与服务平台。 易阅通（CNPeReading.com）是中图公司自主开发的数字内容搜选、采购与阅读一站式全球资源交易与服务平台。易阅通（CNPeReading.com）是中图公司自主开发的数字内容搜选、采购与阅读一站式全球资源交易与服务平台。易阅通（CNPeReading.com）是中图公司自主开发的数字内容搜选、采购与阅读一站式全球资源交易与服务平台。易阅通（CNPeReading.com）是中图公司自主开发的数字内容搜选、采购与阅读一站式全球资源交易与服务平台。易阅通（CNPeReading.com）是中图公司自主开发的数字内容搜选、采购与阅读一站式全球资源交易与服务平台。易阅通（CNPeReading.com）是中图公司自主开发的数字内容搜选、采购与阅读一站式全球资源交易与服务平台。易阅通（CNPeReading.com）是中图公司自主开发的数字内容搜选、采购与阅读一站式全球资源交易与服务平台。1111111111111111111111111111111222222222222222222222222222222222223333333333333333333333333333334444444444444444444444444555555555555555555555555555"-->
+    <!--android:textSize="25sp"/>-->
+    <!--&lt;!&ndash;android:adjustViewBounds="true"&ndash;&gt;-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="500dp"-->
+    <!--android:src="@drawable/bookshelf_detail_bg"/>-->
+
+    <!--</LinearLayout>-->
+
+    <!--</ScrollView>-->
+
+</com.zhy.android.percent.support.PercentLinearLayout>

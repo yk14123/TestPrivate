@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tb_book_category_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bookshelf_app_bar_bg"
+    android:paddingTop="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_10">
+
+    <ImageView
+        android:id="@+id/iv_bookshelf_left_menu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:background="@drawable/bookshelf_icon_back"
+        android:contentDescription="@string/bookshelf_content_description"
+        app:layout_heightPercent="6%w"
+        app:layout_marginStartPercent="2%w"
+        app:layout_widthPercent="6%w" />
+
+    <TextView
+        android:id="@+id/tv_bookshelf_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_toStartOf="@+id/iv_bookshelf_right_menu"
+        android:layout_toEndOf="@+id/iv_bookshelf_left_menu"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/bookshelf_title_text_color"
+        android:textSize="@dimen/sp_18"
+        app:layout_marginEndPercent="3%w"
+        app:layout_marginStartPercent="3%w"
+        tools:text="習近平的著作" />
+
+    <ImageView
+        android:id="@+id/iv_bookshelf_right_menu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:background="@drawable/bookshelf_icon_font"
+        android:contentDescription="@string/bookshelf_content_description"
+        app:layout_heightPercent="5.5%w"
+        app:layout_marginRightPercent="3%w"
+        app:layout_widthPercent="5.5%w" />
+
+</com.zhy.android.percent.support.PercentRelativeLayout>
