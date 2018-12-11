@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import com.chinafocus.mytestanimation.bean.BookContentRawBean;
 import com.chinafocus.mytestanimation.network.ApiManager;
+import com.chinafocus.mytestanimation.utils.JMDESUtil;
+import com.chinafocus.mytestanimation.utils.LogUtil;
 import com.google.gson.Gson;
 
 import io.reactivex.Observable;

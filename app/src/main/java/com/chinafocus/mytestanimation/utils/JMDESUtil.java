@@ -1,4 +1,4 @@
-package com.chinafocus.mytestanimation;
+package com.chinafocus.mytestanimation.utils;
 
 import java.security.Key;
  
