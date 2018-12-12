@@ -26,4 +26,6 @@
 
     <string name="bookshelf_font_normal">标准</string>
     <string name="app_name">MyTest</string>
+
+    <string name="cover_header_behavior" translatable="false">com.chinafocus.mytestanimation.CoverHeaderScrollBehavior</string>
 </resources>

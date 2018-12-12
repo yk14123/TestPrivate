@@ -19,6 +19,9 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".BookShelfMetaActivity">
+
+        </activity>
+        <activity android:name=".TestScrollActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

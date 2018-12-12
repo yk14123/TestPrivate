@@ -74,7 +74,13 @@ public class BookShelfMetaActivity extends AppCompatActivity {
             }
         });
 
+        initSpringback();
+
 //        initUUID();
+    }
+
+    private void initSpringback() {
+
     }
 
     private void initUUID() {
