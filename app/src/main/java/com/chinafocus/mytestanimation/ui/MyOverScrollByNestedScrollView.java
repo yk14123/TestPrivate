@@ -569,9 +569,10 @@ public class MyOverScrollByNestedScrollView extends FrameLayout implements Neste
                     if ((Math.abs(range) > mMinimumVelocity)) {
                         isFling = true;
                         //Log.i("you", "it is fling...");
-                        flingWithNestedDispatch(-range);
-                    } else if (mScroller.springBack(getScrollX(), getScrollY(), 0, 0, 0,
-                            getScrollRange())) {
+                        this.flingWithNestedDispatch(-range);
+                    } else if (this.mScroller.springBack(getScrollX(), this.getScrollY(), 0, 0, 0,
+                            this.getScrollRange())) {
+                        isFling = false;
                         ViewCompat.postInvalidateOnAnimation(this);
                     }
                 }
@@ -635,8 +636,6 @@ public class MyOverScrollByNestedScrollView extends FrameLayout implements Neste
 //                                    mEdgeGlowBottom.onRelease();
 //                                }
 //                            }
-
-
                             if (pulledToY < -getPulldownScroll()) {
                                 EdgeEffectCompat.onPull(this.mEdgeGlowTop, (float) deltaY / (float) this.getHeight(), ev.getX(activePointerIndex) / (float) this.getWidth());
                                 if (!this.mEdgeGlowBottom.isFinished()) {
@@ -679,7 +678,6 @@ public class MyOverScrollByNestedScrollView extends FrameLayout implements Neste
         if (this.mVelocityTracker != null) {
             this.mVelocityTracker.addMovement(vtev);
         }
-
         vtev.recycle();
         return true;
     }
@@ -752,7 +750,7 @@ public class MyOverScrollByNestedScrollView extends FrameLayout implements Neste
     /**
      * 支持向下滑动偏移
      */
-    static final int PULLDOWN_SCALE = 6;
+    static final int PULLDOWN_SCALE = 2;
     /**
      * 向下越界滑动时的滑动比例
      */
@@ -821,14 +819,16 @@ public class MyOverScrollByNestedScrollView extends FrameLayout implements Neste
             clampedY = true;
         }
 
+        //源码：
+        if (clampedY && !this.hasNestedScrollingParent(1)) {
+            this.mScroller.springBack(newScrollX, newScrollY, 0, 0, 0, this.getScrollRange());
+        }
+
         if (clampedY && isFling) {//这里isFling时才回弹
             //Log.i("you", top + "  " + bottom + "  "+deltaY+" "+newScrollY+" "+getScrollRange());
             mScroller.springBack(newScrollX, newScrollY, 0, 0, 0, getScrollRange());
         }
 
-//源码：  if (clampedY && !this.hasNestedScrollingParent(1)) {
-//            this.mScroller.springBack(newScrollX, newScrollY, 0, 0, 0, this.getScrollRange());
-//        }
 
         this.onOverScrolled(newScrollX, newScrollY, clampedX, clampedY);
 

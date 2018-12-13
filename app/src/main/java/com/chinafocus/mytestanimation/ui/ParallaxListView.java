@@ -2,21 +2,23 @@ package com.chinafocus.mytestanimation.ui;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.OvershootInterpolator;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 public class ParallaxListView extends ListView {
 
-    private int mImageViewHeight;
+    private int mParallaxHeight;
+    private int mInitRawHeight;
+    private View mView;
+    private CardView mCardView;
 
     public ParallaxListView(Context context) {
         super(context);
-
     }
 
     public ParallaxListView(Context context, AttributeSet attrs) {
@@ -27,23 +29,14 @@ public class ParallaxListView extends ListView {
         super(context, attrs, defStyleAttr);
     }
 
-    private ImageView mImageView;
-
-    private int mParallaxHeight;
-
-    public void setHeaderView(ImageView iv) {
-        mImageView = iv;
-
-        mImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+    public void setHeaderView(View v) {
+        mView = v;
+        mView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                mImageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                int drawableHeight = mImageView.getDrawable().getIntrinsicHeight();
-                mImageViewHeight = mImageView.getHeight();
-
-                mParallaxHeight = mImageViewHeight > drawableHeight ? mImageViewHeight * 2 : drawableHeight;
-
+                mView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                mInitRawHeight = mView.getHeight();
+                mParallaxHeight = (int) (mInitRawHeight * 1.2);
             }
         });
     }
@@ -58,19 +51,16 @@ public class ParallaxListView extends ListView {
      */
     @Override
     protected boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY, int scrollRangeX, int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) {
-//        Log.i("MyLog", "deltaY = " + deltaY + "-- isTouchEvent = " + isTouchEvent);
 
         if (deltaY < 0 && isTouchEvent) {
-            //表示已经在顶部，并且正准备向下滑
-            if (mImageView != null) {
-                int newHeight = mImageView.getHeight() - deltaY / 3;
-                if (newHeight >= mParallaxHeight) newHeight = mParallaxHeight;
-                mImageView.getLayoutParams().height = newHeight;
-                mImageView.requestLayout();
+            int newHeight = mView.getHeight() - deltaY / 3;
+            if (newHeight >= mParallaxHeight) newHeight = mParallaxHeight;
+            if (mView != null) {
+                mView.getLayoutParams().height = newHeight;
+//                mView.setPadding(0,newHeight,0,0);
+                mView.requestLayout();
             }
-
         }
-
         return super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX, scrollRangeY, maxOverScrollX, maxOverScrollY, isTouchEvent);
     }
 
@@ -78,20 +68,20 @@ public class ParallaxListView extends ListView {
     public boolean onTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_UP) {
             //需要将ImageView的高度缓慢恢复到最初高度
-            ValueAnimator animator = ValueAnimator.ofInt(mImageView.getHeight(), mImageViewHeight);
+            ValueAnimator animator = ValueAnimator.ofInt(mView.getHeight(), mInitRawHeight);
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animator) {
                     //获取动画的值，设置给imageview
                     int animatedValue = (Integer) animator.getAnimatedValue();
-                    Log.i("MyLog", "ACTION_UP = ");
-                    mImageView.getLayoutParams().height = animatedValue;
-                    mImageView.requestLayout();//使ImageView的布局参数生效
+                    mView.getLayoutParams().height = animatedValue;
+                    mView.requestLayout();//使ImageView的布局参数生效
                 }
             });
             animator.setInterpolator(new OvershootInterpolator(5));//弹性的插值器
             animator.setDuration(350);
             animator.start();
+
         }
         return super.onTouchEvent(ev);
     }

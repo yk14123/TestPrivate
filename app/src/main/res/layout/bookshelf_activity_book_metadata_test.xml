@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#f00"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f00">
 
     <ImageView
         android:id="@+id/iv_bg"
@@ -33,11 +33,10 @@
 
     <!--</android.support.design.widget.AppBarLayout>-->
 
-    <com.chinafocus.mytestanimation.ui.MyOverScrollByNestedScrollView
+    <android.support.v4.widget.NestedScrollView
         android:id="@+id/nsv_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="always">
+        android:layout_height="match_parent">
 
         <com.zhy.android.percent.support.PercentFrameLayout
             android:id="@+id/fl_nested_scrollview_bg"
@@ -49,9 +48,9 @@
 
             <com.chinafocus.mytestanimation.ui.OverScrollFrameLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="300dp"
-                android:background="#0000"
-                android:layout_height="wrap_content">
+                android:background="#0000">
 
                 <LinearLayout
                     android:id="@+id/ll_intercept_event"
@@ -91,7 +90,7 @@
 
                         android:id="@+id/rv_home"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:overScrollMode="always"
                         />
                     <!--android:nestedScrollingEnabled="false"-->
@@ -180,7 +179,7 @@
         </com.zhy.android.percent.support.PercentFrameLayout>
 
 
-    </com.chinafocus.mytestanimation.ui.MyOverScrollByNestedScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
     <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
     <!--</android.support.design.widget.CoordinatorLayout>-->

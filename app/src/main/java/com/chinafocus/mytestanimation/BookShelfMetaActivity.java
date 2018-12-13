@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,6 +44,10 @@ public class BookShelfMetaActivity extends AppCompatActivity {
     CardView mCardView;
     @BindView(R.id.ll_intercept_event)
     LinearLayout mLinearLayout;
+    @BindView(R.id.nsv_home)
+    NestedScrollView mMyOverScrollByNestedScrollView;
+//    @BindView(R.id.nsv_home)
+//    MyOverScrollByNestedScrollView mMyOverScrollByNestedScrollView;
 
     private static String[] names = {"功能1", "功能2", "功能3", "功能4", "功能5", "功能5", "功能5", "功能5", "功能5", "功能5", "功能5", "功能5", "功能5",
             "功能1", "功能2", "功能3", "功能4", "功能5", "功能5", "功能5", "功能5", "功能5", "功能5", "功能5", "功能5", "功能5",
@@ -69,7 +74,7 @@ public class BookShelfMetaActivity extends AppCompatActivity {
         mFrameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("MyLog","mFrameLayout被点击了");
+                Log.i("MyLog", "mFrameLayout被点击了");
                 Toast.makeText(getApplicationContext(), "mFrameLayout被点击了", Toast.LENGTH_SHORT).show();
             }
         });
@@ -77,6 +82,26 @@ public class BookShelfMetaActivity extends AppCompatActivity {
         initSpringback();
 
 //        initUUID();
+
+        initNestedScrollView();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void initNestedScrollView() {
+
+        mMyOverScrollByNestedScrollView.setPadding(0,-100,0,0);
+
+        mMyOverScrollByNestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView nestedScrollView, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                Log.i("MyTest", "NestedScrollView   scrollX  -- > " + scrollX);
+                Log.i("MyTest", "NestedScrollView   scrollY  -- > " + scrollY);
+                Log.i("MyTest", "NestedScrollView   oldScrollX  -- > " + oldScrollX);
+                Log.i("MyTest", "NestedScrollView   oldScrollY  -- > " + oldScrollY);
+            }
+        });
+
+
     }
 
     private void initSpringback() {
@@ -211,7 +236,7 @@ public class BookShelfMetaActivity extends AppCompatActivity {
 
 //        initBgTest01(mIv_bgHeight);
 
-        MultiTransformation multiTransformation = new MultiTransformation(new CropTransformation(mIv_bgWidth,mIv_bgHeight,CropTransformation.CropType.TOP));
+        MultiTransformation multiTransformation = new MultiTransformation(new CropTransformation(mIv_bgWidth, mIv_bgHeight, CropTransformation.CropType.TOP));
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.transform(multiTransformation);
         Glide.with(this).load(R.drawable.metadata_bg).apply(requestOptions).into(mIv_bg);
